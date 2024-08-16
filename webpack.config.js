@@ -1,10 +1,11 @@
-const path = require['path'];
+const path = require('path');
 
 module.exports = {
+    mode:'development',  
     entry: './src/index.js', // Punto de entrada de la applicación
     output: {
         filename: 'bundle.js', // Nombre del archivo de salida
-         path: path.resolve(__dirname, 'dist'), // Carpeta de salida
+         path: path.resolve(__dirname,'dist'), //Carpeta de salida
     },
  module: {
 rules: [
@@ -26,8 +27,10 @@ use: ['style-loader', 'css-loader'], // Librerias o loaders que sirven para proc
   },
   devtool: 'source-map', //Generar source map p mapas de codigo para facilitar la depuración
   devServer: {
-    contentBase: path.resolve{__dirname, 'dist'}, //carpeta desde el cual el servidor agarrara los archivos
-    Compress: true, //Habilitar compresión grip
+    static: {
+        directory: path.resolve(__dirname, 'dist'),
+    },
+    compress: true, //Habilitar compresión grip
     port: 9000, //puerto del servidor de desarrollo
   },
 }; 
